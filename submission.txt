@@ -1,0 +1,84 @@
+Cybersecurity Incident Response Assignment
+
+# Cybersecurity Incident Response Answers
+
+## 1. Phishing Email
+To confirm a phishing email, I would first inspect the sender address, the reply-to address, the URL behind the link, and the email headers for spoofing or domain mismatch. I would compare the message with known legitimate company emails and check whether the link leads to a suspicious or misspelled domain. If available, I would scan the link and any attachment in a secure sandbox or with email security tools. I would ask the employee whether they clicked the link or entered any credentials. To contain the risk, I would instruct the user not to interact further with the email, isolate the message in the mail system, and block the sender, URL, or domain if confirmed malicious. If credentials may have been entered, I would reset the password, revoke sessions, and review account activity. I would then report the incident through the internal security process, preserve evidence, and update detection rules or user awareness guidance.
+
+## 2. Malware Infection
+I would begin by asking the user what symptoms appeared, when they started, and whether any suspicious files or links were opened. I would isolate the affected computer from the network to stop possible spread or command-and-control traffic. Next, I would review running processes, startup items, browser extensions, scheduled tasks, and recent downloads to identify indicators of compromise. I would run an updated antivirus or EDR scan and, if needed, use additional malware analysis tools to detect persistence mechanisms. I would remove malicious files, disable persistence, and quarantine anything suspicious. If the infection is severe or trust in the system is lost, I would reimage the machine from a known-good source. After cleanup, I would patch the OS and applications, reset relevant passwords, restore clean data from backup if required, and monitor the endpoint closely.
+
+## 3. Ransomware Attack
+My first step would be to isolate the affected server immediately from the network to prevent lateral movement and further encryption. I would preserve evidence by collecting logs, ransom notes, timestamps, and indicators of compromise before making major changes. I would identify whether other hosts are affected and segment or shut down impacted systems as necessary. I would alert the incident response team, management, and any required legal or compliance contacts at once. I would check backup integrity and determine the last known clean restore point. I would not rush to pay the ransom, because payment does not guarantee recovery and may create legal or operational risks. I would begin eradication by identifying the entry point, removing malicious access, rebuilding affected systems if needed, and restoring from verified clean backups. Finally, I would document the event, notify stakeholders appropriately, and strengthen controls to prevent recurrence.
+
+## 4. Unauthorized Access Attempt
+I would first validate the IDS alert by reviewing authentication logs, firewall logs, VPN logs, and system timestamps to confirm the failed login pattern. I would identify the targeted accounts, the source IP, geographic origin, frequency, and whether the attempts matched brute-force behavior. If the activity is clearly malicious, I would block the IP or range at the firewall, IDS/IPS, VPN gateway, or application layer as appropriate. I would also check whether any login attempts succeeded and review related account activity for compromise. To prevent future attacks, I would enforce MFA, strong password policies, account lockout thresholds, rate limiting, and IP reputation filtering where possible. If internet-facing services are exposed, I would verify they are patched and reduce unnecessary exposure. I would document the event and tune alerting rules for similar attempts.
+
+## 5. Data Breach Suspicion
+I would first verify the report by collecting the allegedly exposed files, checking whether they are authentic, and determining what client data is involved. Then I would review access logs, sharing records, cloud audit logs, and endpoint activity to see whether unauthorized access or exfiltration occurred. If a breach is likely, I would immediately contain the issue by revoking suspicious sessions, rotating passwords or keys, restricting access, and preserving forensic evidence. I would identify the scope of affected systems, records, users, and time range. Internally, I would notify leadership, legal, compliance, and the incident response team so communication stays accurate and controlled. Externally, I would follow regulatory and contractual notification requirements and communicate clearly with the client about what is known, what is being investigated, and what actions are being taken. After containment, I would remediate the root cause, monitor for further exposure, and document the full incident.
+
+## 6. Web Application Vulnerability
+For a WordPress or PrestaShop site, I would check patch level, plugins or modules, themes, exposed admin panels, weak credentials, file permissions, backups, and security headers. I would also test for common web issues such as SQL injection, cross-site scripting, CSRF, authentication flaws, insecure file upload, directory listing, and outdated components. I would review TLS configuration, session handling, user roles, logging, and unnecessary exposed services. Useful tools include Nmap for service discovery, Nikto for basic web checks, WPScan for WordPress, Burp Suite for manual testing, OWASP ZAP for automated scanning, and browser developer tools for client-side review. I would also inspect configuration files and server settings where access is available. The goal is to combine automated scans with manual validation so false positives are reduced.
+
+## 7. Network Compromise
+I would begin by identifying the device communicating with the suspicious IP using firewall logs, DHCP records, ARP tables, EDR, or network monitoring data. Once confirmed, I would isolate the device from the network to stop any ongoing malicious traffic. I would capture relevant evidence such as active connections, processes, logged-in users, recent files, and security events before rebooting or changing too much. Tools I could use include Wireshark, tcpdump, EDR consoles, netstat or ss, antivirus tools, and SIEM queries. I would determine whether the communication is malicious by checking threat intelligence sources, DNS history, and the process responsible for the traffic. Then I would remove malware or unauthorized tools, patch the system, reset credentials, and restore from a clean image if needed. Finally, I would verify the device is clean and monitor it for re-infection or repeat contact attempts.
+
+## 8. Risk Management & AI Security
+To assess the risk of an AI assistant, I would identify what data it can access, what actions it can perform, who can use it, and what business process depends on it. I would evaluate risks such as data leakage, excessive permissions, harmful output, insecure integrations, weak logging, third-party dependency risk, and regulatory exposure. I would also review whether prompts, uploaded files, or outputs could expose confidential information. Then I would define controls such as least-privilege access, human approval for sensitive actions, audit logs, output review, content filtering, and vendor security assessment. Prompt injection in AI security means an attacker places malicious instructions in user input, web content, documents, or other data so the model is tricked into ignoring its intended instructions or revealing sensitive information. In short, it is like command injection for LLM-driven systems. Because of that, untrusted content must never be treated as safe instructions.
+
+## 9. Security Checklist Exercise
+A good application security checklist should include patch management, secure authentication, role-based access control, TLS configuration, input validation, secure backups, logging and monitoring, file permission review, and secret management. It should also include disabled debug mode, safe error handling, and protection against common OWASP Top 10 issues. For example, to test authentication security, I would verify strong password rules, MFA support, lockout settings, and session timeout behavior. I would attempt invalid logins, password reuse checks, and session token review to confirm controls work correctly. I would also review whether default accounts or weak admin paths exist. This helps confirm the application is secure both by configuration and by behavior.
+
+## 10. Current Affairs in Cybersecurity
+**a. Kevin Mitnick** was a famous hacker, security consultant, and author known for social engineering and later for helping organizations improve security awareness.  
+**b. Eugene Kaspersky** is the founder of Kaspersky, a major cybersecurity company known for antivirus and threat intelligence research.  
+**c. Linus Torvalds** is the creator of the Linux kernel and Git, making him one of the most influential figures in modern software infrastructure.  
+**d. Bruce Schneier** is a respected security expert, author, and public thinker known for writing about cryptography, security policy, and risk.  
+**e. Parisa Tabriz** is a prominent security leader at Google, widely known for work on browser security and for leading Chrome security efforts.
+
+
+# Application Security Checklist
+
+- Keep the application, plugins, themes, and server packages fully updated
+- Enforce strong authentication and enable MFA for administrator accounts
+- Remove default accounts, sample content, and unused modules
+- Validate and sanitize all user input
+- Use HTTPS with valid TLS configuration and secure cookies
+- Restrict file upload types and verify uploads server-side
+- Apply least-privilege permissions to files, folders, and database users
+- Protect secrets and API keys outside the web root
+- Enable logging, alerting, and regular backup verification
+- Review admin panel exposure and brute-force protections
+
+## Example Test
+To test file upload security, I would attempt to upload different file types including allowed files, blocked extensions, renamed executable files, and oversized files. I would confirm the server rejects dangerous files, stores uploads safely, and prevents uploaded files from executing as code.
+
+
+# Basic Incident Response Template
+
+## 1. Identification
+- What happened?
+- Who reported it?
+- When was it first observed?
+- What systems or users are affected?
+
+## 2. Containment
+- Isolate affected systems
+- Block malicious IPs, domains, or accounts
+- Preserve logs and evidence
+
+## 3. Eradication
+- Remove malware or unauthorized access
+- Patch vulnerabilities
+- Disable persistence mechanisms
+- Reset compromised credentials
+
+## 4. Recovery
+- Restore from clean backups if needed
+- Return systems to service in stages
+- Monitor closely for reinfection or repeated abuse
+
+## 5. Lessons Learned
+- Document root cause
+- Record timeline and impact
+- Improve controls, detections, and user awareness
